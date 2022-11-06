@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import {StyleSheet,Text,View, Alert,Statusbar, FlatList, TouchableOpacity,ScrollView,TouchableWithoutFeedback,Keyboard} from 'react-native'
 import { Header,TodoItem, AddTodo } from './Component'
+import Sandbox from './Component/Sandbox'
 
 const App = ()=>{
 
@@ -36,6 +37,7 @@ const App = ()=>{
 
 
     return(
+        // <Sandbox/>
         <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
             <View style={styles.container}>
             {/* header */}
@@ -68,7 +70,12 @@ const styles = StyleSheet.create({
     },
     content:{
         padding:40,
-
+        flex:1
+    },
+    list:{
+        flex:1,
+        // flexWrap:'wrap',
+        flexDirection:'row'
     }
 })
 
