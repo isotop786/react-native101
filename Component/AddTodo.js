@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View ,TextInput,Button,Alert} from 'react-native'
+import { StyleSheet, Text, View ,TextInput,Button,Alert,Keyboard} from 'react-native'
 import React, {useState,useEffect} from 'react'
 
 const AddTodo = ({addTodo}) => {
@@ -13,6 +13,7 @@ const AddTodo = ({addTodo}) => {
         {
             addTodo(text)
             setText('')
+            Keyboard.dismiss();
         }
         else{
             Alert.alert('Error','Text can not be less than 3 character')

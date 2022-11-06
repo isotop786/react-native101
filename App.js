@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {StyleSheet,Text,View, Alert,Statusbar, FlatList, TouchableOpacity,ScrollView} from 'react-native'
+import {StyleSheet,Text,View, Alert,Statusbar, FlatList, TouchableOpacity,ScrollView,TouchableWithoutFeedback,Keyboard} from 'react-native'
 import { Header,TodoItem, AddTodo } from './Component'
 
 const App = ()=>{
@@ -14,9 +14,9 @@ const App = ()=>{
     
     const pressHandler = (id)=>{
        console.log(id);
-        // setTodos((prevTodos)=>{
-        //     return prevTodos.filter(todo => todo.id !== id)
-        // })
+        setTodos((prevTodos)=>{
+            return prevTodos.filter(todo => todo.id !== id)
+        })
     }
 
     const changeHandler = (text)=>{
@@ -34,34 +34,30 @@ const App = ()=>{
         console.log(todos)
     }
 
-    useEffect(()=>{
-
-    })
-
 
     return(
-   
-        <View style={styles.container}>
-           {/* header */}
-           <Header text="My Todos"/>
-           <View style={styles.content}>
-            {/* to form */}
-            <AddTodo 
-            changeHandler={changeHandler}
-            addTodo={addTodo}
-            />
-            <View style={styles.list}>
-                <FlatList
-                    data={todos}
-                    renderItem={({item})=>(
-                       <TodoItem item={item} pressHandler={pressHandler} />
-                    )}
-                    keyExtractor={item => item.id}
+        <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
+            <View style={styles.container}>
+            {/* header */}
+            <Header text="My Todos"/>
+            <View style={styles.content}>
+                {/* to form */}
+                <AddTodo 
+                changeHandler={changeHandler}
+                addTodo={addTodo}
                 />
+                <View style={styles.list}>
+                    <FlatList
+                        data={todos}
+                        renderItem={({item})=>(
+                        <TodoItem item={item} pressHandler={pressHandler} />
+                        )}
+                        keyExtractor={item => item.id}
+                    />
+                </View>
             </View>
-           </View>
-        </View>
-       
+            </View>
+        </TouchableWithoutFeedback>
     )
 }
 
