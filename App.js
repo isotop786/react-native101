@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react'
 import {StyleSheet,Text,View, Alert,Statusbar, FlatList, TouchableOpacity,ScrollView,TouchableWithoutFeedback,Keyboard} from 'react-native'
 import { Header,TodoItem, AddTodo } from './Component'
 import Sandbox from './Component/Sandbox'
+import {Ionicons} from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons'; 
 
 const App = ()=>{
 
@@ -49,6 +51,7 @@ const App = ()=>{
                 addTodo={addTodo}
                 />
                 <View style={styles.list}>
+                    
                     <FlatList
                         data={todos}
                         renderItem={({item})=>(
